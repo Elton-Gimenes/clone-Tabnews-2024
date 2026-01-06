@@ -1,6 +1,18 @@
 import database from "infra/database.js";
 
 async function status(request, response) {
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+  await database.query("SHOW server_version");
+
   const updatedAt = new Date().toISOString();
   const dbVersionResult = await database.query("SHOW server_version");
   const dbVersionValue = dbVersionResult.rows[0].server_version;
@@ -12,7 +24,7 @@ async function status(request, response) {
     values: [databaseName],
   });
   const dbOpenedConnectionsValue = dbOpenedConnectionsResult.rows[0].count;
-  
+
   response.status(200).json({
     updated_at: updatedAt,
     dependencies: {
